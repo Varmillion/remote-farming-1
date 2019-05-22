@@ -9742,6 +9742,11 @@ module.exports = require('./lib/axios');
 },{"./lib/axios":"node_modules/axios/lib/axios.js"}],"app.js":[function(require,module,exports) {
 "use strict";
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.addLand = void 0;
+
 var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -9808,52 +9813,66 @@ var BASE_URL = 'http://0.0.0.0:5000/api'; // const getTodos = () => axios.get(BA
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
 // ----------------------------------------------------------------
+// const getLands = () => axios.get(BASE_URL+'/property')
+//                           .then(function (response) {
+//                             // handle success
+//                               console.log(response.data);
+//                               return response.data;
+//                           });
+// const createLi1 = item => {
+//   const li = document.createElement('a');
+//   li.appendChild(document.createTextNode(item.id + '.  ' + item.name + ',  ' +item.address));
+//   return li;
+// };
+// const addLandsToDOM = property => {
+//   const ol = document.querySelector('ol');
+//   if (Array.isArray(property) && property.length > 0) {
+//     property.map(property => {
+//       ol.appendChild(createLi1(property));
+//     });
+//   } else if (property) {
+//     ol.appendChild(createLi(property));
+//   }
+// };
+// const main1 = async () => {
+//   addLandsToDOM(await getLands());
+// };
+// main1();
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
+// ----------------------------------------------------------------
 
-var getLands = function getLands() {
-  return _axios.default.get(BASE_URL + '/property').then(function (response) {
-    // handle success
-    console.log(response.data);
-    return response.data;
-  });
-};
-
-var createLi1 = function createLi1(item) {
-  var li = document.createElement('a');
-  li.appendChild(document.createTextNode(item.id + '.  ' + item.name + ',  ' + item.address));
-  return li;
-};
-
-var addLandsToDOM = function addLandsToDOM(property) {
-  var ol = document.querySelector('ol');
-
-  if (Array.isArray(property) && property.length > 0) {
-    property.map(function (property) {
-      ol.appendChild(createLi1(property));
-    });
-  } else if (property) {
-    ol.appendChild(createLi(property));
-  }
-};
-
-var main1 =
+var form = document.querySelector('form');
+var formEvent = form.addEventListener('submit',
 /*#__PURE__*/
 function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
-  regeneratorRuntime.mark(function _callee() {
+  regeneratorRuntime.mark(function _callee(event) {
+    var name, pincode, areaSize, address, land, addedLand;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.t0 = addLandsToDOM;
-            _context.next = 3;
-            return getLands();
+            event.preventDefault();
+            name = document.querySelector("#new-land__name").value;
+            pincode = document.querySelector("#new-land__pincode").value;
+            areaSize = document.querySelector("#new-land__areaSize").value;
+            address = document.querySelector("#new-land__address").value;
+            land = {
+              name: name,
+              pincode: pincode,
+              address: address,
+              areaSize: areaSize
+            };
+            _context.next = 8;
+            return addLand(land);
 
-          case 3:
-            _context.t1 = _context.sent;
-            (0, _context.t0)(_context.t1);
+          case 8:
+            addedLand = _context.sent;
+            addLandToDOM(addedLand);
 
-          case 5:
+          case 10:
           case "end":
             return _context.stop();
         }
@@ -9861,40 +9880,51 @@ function () {
     }, _callee);
   }));
 
-  return function main1() {
+  return function (_x) {
     return _ref.apply(this, arguments);
+  };
+}());
+
+var addLand =
+/*#__PURE__*/
+function () {
+  var _ref2 = _asyncToGenerator(
+  /*#__PURE__*/
+  regeneratorRuntime.mark(function _callee2(land) {
+    var res, addedLand;
+    return regeneratorRuntime.wrap(function _callee2$(_context2) {
+      while (1) {
+        switch (_context2.prev = _context2.next) {
+          case 0:
+            _context2.prev = 0;
+            _context2.next = 3;
+            return _axios.default.post("".concat(BASE_URL, "/property"), land);
+
+          case 3:
+            res = _context2.sent;
+            addedLand = res.data;
+            console.log("Added a new Land!", addedLand);
+            return _context2.abrupt("return", addedLand);
+
+          case 9:
+            _context2.prev = 9;
+            _context2.t0 = _context2["catch"](0);
+            console.error(_context2.t0);
+
+          case 12:
+          case "end":
+            return _context2.stop();
+        }
+      }
+    }, _callee2, null, [[0, 9]]);
+  }));
+
+  return function addLand(_x2) {
+    return _ref2.apply(this, arguments);
   };
 }();
 
-main1(); // ----------------------------------------------------------------
-// ----------------------------------------------------------------
-// ----------------------------------------------------------------
-// const form = document.querySelector('form');
-// const formEvent = form.addEventListener('submit', async event => {
-//   event.preventDefault();
-//   const name = document.querySelector("#new-land__name").value;
-//   const pincode = document.querySelector("#new-land__pincode").value;
-//   const areaSize = document.querySelector("#new-land__areaSize").value;
-//   const address = document.querySelector("#new-land__address").value;
-//   const land = {
-//   	name,
-//   	pincode,
-//   	address,
-//   	areaSize
-//   };
-//   const addedLand = await addLand(land);
-//   addLandToDOM(addedLand);
-// });
-// export const addLand = async land => {
-//   try {
-//     const res = await axios.post(`${BASE_URL}/property`, land);
-//     const addedLand = res.data;
-//     console.log(`Added a new Land!`, addedLand);
-//     return addedLand;
-//   } catch (e) {
-//     console.error(e);
-//   }
-// };
+exports.addLand = addLand;
 },{"babel-polyfill":"../../node_modules/babel-polyfill/lib/index.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
