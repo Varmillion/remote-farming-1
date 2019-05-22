@@ -1,0 +1,325 @@
+body{
+	margin: 0;
+	font-size: 0.51rem;
+	line-height: 1.5;
+
+/*	overflow-x: hidden;
+*/	
+
+}
+
+
+
+/* -------HEADER START!-------- */
+/* The part including the logo, video, the text & menu */
+
+.pageHeader{
+	min-width: 100%;
+	background-color: grey;
+	height: 80vh;
+	align-items: center;
+	color: black;
+	width: 100%;
+	text-align: center;
+	overflow: hidden;
+}
+/* the video part! */
+.videoHeader, video{
+	min-width: 100%;
+	max-height: 80vh;
+	min-height: 80vh;
+}
+/* VIDEO PART ENDs! */
+
+
+/* The overlay color over the video with low opacity! */
+.headerOverlay{
+	height: 80vh;
+	width: 100vw;
+	position: absolute;
+	background-color: black;
+	top: 0;
+	left: 0;
+	opacity: .5;
+}
+/* Overlay part ENDs! */
+
+
+/* The text Over the Video! */
+.headerContent{
+	/*background-color: black;*/
+	opacity: .5;
+	color: white;
+	position: absolute;
+	top: 5%;
+	left: 5%;
+	z-index: 1;
+	line-height: 5.5;
+	font-size: 2rem;
+	margin: 10%;
+
+}
+.vddiHeading{
+	color: white;
+}
+.abc{
+	color: white;
+}
+
+/* text on the video part ENDs! */
+
+
+
+/* The menu in the header! */
+
+.headerLogoMenu{
+	width: 100%;
+	height: 10%;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	margin-left: 0;
+}
+
+.nav-toggle{
+	margin: 5%;
+	display: none;
+}
+.nav-toggle:checked ~ nav{
+	display: block;
+}
+
+.headerMenu{
+	display: none;
+	position: absolute;
+	right: 10px;
+	top: 50px;
+}
+
+
+li{
+	list-style-type: none;
+}
+nav li{
+	background-color: black;
+	color: white;
+
+	margin top: 20px;
+	padding: 5px;
+}
+nav li:hover{
+	color: white;
+	background-color: black;
+}
+.nav-toggle-label{
+	color: white;
+}
+
+/*.menuLinks{
+	color: black;
+	background-color: black;
+}*/
+
+/* The header menu ENDs */
+
+/* The logo part in the header! */
+.headerPNG{
+	min-width: 50px;
+	width: 80px;
+	position: absolute;
+	top: 0;
+	left:0;
+	margin: 10px;
+	padding-left: 20px;
+}
+
+
+/* HEADER PART ENDs here! */
+/* The three column portion with Modules description! */
+.modules-headings{
+	
+}
+
+.topics-description{
+	padding: 4%;
+	text-align: center;
+}
+.about{
+	
+	text-align: center;
+	margin: 10%;
+}
+.about-p{
+	margin: 2%;
+}
+.p1{
+	font-size: 2rem;
+	line-height: 30px;
+}
+
+@media screen and (min-width: 718px){
+
+
+	
+	.modules-headings{
+	display: flex;
+	justify-content: center;
+	}
+
+	.topics-description{
+		flex:1 100%;
+		padding: 3%;
+		text-align: center;
+	}
+	.about{
+		display: flex;
+		text-align: center;
+		align-items: center;
+		margin: 10%;
+	}
+
+	.about-p{
+		width: 45%;
+		margin: 2%;
+
+	}
+	.p1{
+		font-size: 2rem;
+		line-height: 30px;
+	}
+	.p2{
+		float: right;
+	}
+	.headerLogoMenu{
+	width: 100%;
+	height: 10%;
+	overflow: hidden;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: 0;
+	margin-left: 0;
+	padding: 10px; 
+	}
+	.nav-toggle{
+		display: none;
+	}
+	.headerMenu{
+	display: block;
+	position: absolute;
+	right: 0;
+	top: 10px;
+
+}
+  .nav-toggle-label{
+display: none;
+  }
+  nav{
+    all:unset;
+  }
+/*
+
+	.headerMenu{
+		display: block;
+		color: black;
+		padding: 10px;
+
+
+	}*/
+
+	li{
+	list-style-type: none;
+	}
+	nav li{
+		color: white;
+		margin: 4px;
+		display: inline-block;
+		float: left;
+		padding: 10px;
+	}
+	nav li:hover{
+		color: white;
+		background-color: black;
+	}
+	.menuLinks{
+		color: black;
+		background-color: black;
+
+	}
+
+
+}
+
+
+/*
+@media screen and (min-width:768px){
+	.modules-headings{
+	display: flex;
+	justify-content: left;
+}
+
+
+}*/
+
+ol li{
+	color: white;
+	text-align: left;
+	background-color: black;
+	padding: 10px;
+	margin: 10px;
+}
+ol li:hover{
+	color: black;
+	background-color: white;
+	transition-duration: .6s;
+}
+ol a{
+	display: block;
+	color: white;
+	text-align: left;
+	background-color: black;
+	padding: 10px;
+	margin: 10px;
+}
+ol a:hover{
+	color: black;
+	background-color: white;
+	transition-duration: .6s;
+}
+
+hr{
+	width: 50%;
+
+}
+
+
+
+
+footer{
+	width: 100%;
+    height: 10%;
+    display: flex;
+  	flex-direction:column;
+  	justify-content:flex-end;
+ }
+
+.footerThanks{
+  display:flex;
+  justify-content:flex-end;
+    font-size: 1rem;
+    margin: 1%;
+}
+
+.social{
+   display:flex;
+  justify-content:flex-end;
+  margin: 1%;
+  }
+
+
+
+
+
+
+/*# sourceMappingURL=/remote.32d92843.css.map */
